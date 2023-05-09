@@ -1,19 +1,32 @@
-import alfabeto from "../alfabeto";
+import Jogo from "./Jogo";
+import Letras from "./Letras";
+
+import { useState } from "react";
+import palavras from "../palavras";
 
 function App() {
+
+  const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+  const [play, setPlay] = useState(false);
+  const [arrPalavra, setArrPalavra] = useState([]);
+  const [enableButton, setEnableButton] = useState(true);
+
+  function startGame() {
+      setPlay(true);
+
+      const newPalavras = palavras.sort(() => Math.random() - 0.5);
+      const palavra = newPalavras[0];
+      console.log(palavra);
+      setArrPalavra(palavra.split(''));
+
+      setEnableButton(false);
+  }
+
   return (
     <div className="body">
-        <div className="game">
-          <img src="./assets/forca0.png"/>
-          <button>Escolher Palavra</button>
-          <div className="word">
-            <p>_ _ _ _ _ _ _ _</p>
-          </div>
-        </div>
-
-        <div className="keyBoard">
-          {alfabeto.map(letra => <button>{letra}</button>)}
-        </div>
+        <Jogo play={play} arrPalavra={arrPalavra} startGame={startGame}/>
+        <Letras enableButton={enableButton} alfabeto={alfabeto}/>
     </div>
   );
 }

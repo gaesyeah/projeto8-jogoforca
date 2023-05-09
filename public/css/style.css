@@ -25,6 +25,8 @@ img {
     position: absolute;
     right: 61px;
     top: 431px;
+    display: flex;
+    gap: 10px;
 }
 .game div p {
     font-family: 'Noto Sans';
@@ -47,6 +49,9 @@ img {
     line-height: 23px;
     color: #FFFFFF; 
 }
+.game button:hover {
+    cursor: pointer;
+}
 
 .keyBoard {
     width: 664px;
@@ -60,11 +65,22 @@ img {
 .keyBoard button {
     width: 40px;
     height: 40px;
-    background: #E1ECF4;
-    border: 1px solid #7AA7C7;
     border-radius: 3px;
 
     font-size: 16px;
     line-height: 19px;
+}
+.enabled {
+    cursor: pointer;
+
+    background: #E1ECF4;
+    border: 1px solid #7AA7C7;
+
     color: #39739D;
+}
+.disabled {
+    background: #9FAAB5;
+    border: 1px solid #7AA7C7;
+
+    color: #798A9F;
 }
