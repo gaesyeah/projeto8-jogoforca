@@ -1,0 +1,70 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: normal;
+    font-weight: 700;
+}
+* {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+}
+img {
+    width: 400px;
+    margin-top: 59px;
+    margin-left: 38px;
+}
+.body {
+    width: 1025px;
+    height: 839px;
+    position: relative;
+}
+.game div {
+    position: absolute;
+    right: 61px;
+    top: 431px;
+}
+.game div p {
+    font-family: 'Noto Sans';
+    font-size: 50px;
+    line-height: 68px;
+    color: #000000;
+}
+.game button {
+    position: absolute;
+    top: 89px;
+    right: 53px;
+
+    width: 200px;
+    height: 60px;
+    background: #27AE60;
+    border-radius: 8px;
+    border-style: none;
+
+    font-size: 20px;
+    line-height: 23px;
+    color: #FFFFFF; 
+}
+
+.keyBoard {
+    width: 664px;
+    position: absolute;
+    top: 596px;
+    left: 211px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 11px 12px;
+}
+.keyBoard button {
+    width: 40px;
+    height: 40px;
+    background: #E1ECF4;
+    border: 1px solid #7AA7C7;
+    border-radius: 3px;
+
+    font-size: 16px;
+    line-height: 19px;
+    color: #39739D;
+}
