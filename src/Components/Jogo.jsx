@@ -2,7 +2,7 @@ import forca from '../assets/forca0.png'
 
 function Jogo(props) {
 
-    const {play, testArrPalavra, arrPalavra, startGame} = props
+    const {play, newArrPalavra, arrPalavra, startGame} = props
 
     return (
         <div className="game">
@@ -10,7 +10,7 @@ function Jogo(props) {
             <button onClick={startGame}>Escolher Palavra</button>
             {play &&
                 <div>
-                    {(testArrPalavra.length > 0) ? testArrPalavra.map(letra => <p>{letra}</p>) : arrPalavra.map(() => <p>_</p>)}
+                    {(newArrPalavra.length > 0) ? newArrPalavra.map(letra => <p>{letra}</p>) : arrPalavra.map(() => <p>_</p>)}
                 </div>
             }
         </div>

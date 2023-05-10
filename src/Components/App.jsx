@@ -4,13 +4,13 @@ import Letras from "./keyboard/Letras";
 import { useState } from "react";
 import palavras from "../palavras";
 
-let guessedArrPalavra;
+let guessedArrPalavra = [];
+let arrPalavra  = [];
 function App() {
 
   const [play, setPlay] = useState(false);
-  const [arrPalavra, setArrPalavra] = useState([]);
 
-  const [testArrPalavra, setTestArrPalavra] = useState([]);
+  const [newArrPalavra, setNewArrPalavra] = useState([]);
 
   const [enableButton, setEnableButton] = useState(true);
 //----------------------
@@ -21,7 +21,7 @@ function App() {
     const newPalavras = palavras.sort(() => Math.random() - 0.5);
     const palavra = newPalavras[0];
     console.log(palavra);
-    setArrPalavra(palavra.split(''));
+    arrPalavra = palavra.split('');
 
     setPlay(true);
     setEnableButton(false);
@@ -42,16 +42,14 @@ function App() {
         }
     });
     console.log(guessedArrPalavra);
-    setTestArrPalavra([...guessedArrPalavra]);
-
-
+    setNewArrPalavra([...guessedArrPalavra]);
 }
 
 //----------------------
 
   return (
     <div className="body">
-        <Jogo play={play} testArrPalavra={testArrPalavra} arrPalavra={arrPalavra} startGame={startGame} />
+        <Jogo play={play} newArrPalavra={newArrPalavra} arrPalavra={arrPalavra} startGame={startGame} />
         <Letras enableButton={enableButton} keyGuess={keyGuess} />
     </div>
   );
