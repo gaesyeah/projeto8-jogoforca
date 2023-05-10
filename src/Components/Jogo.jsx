@@ -1,6 +1,6 @@
 function Jogo(props) {
 
-    const {play, newArrPalavra, arrPalavra, startGame, victory, forcaGuess} = props
+    const {play, newArrPalavra, arrPalavra, startGame, gameState, forcaGuess} = props
 
     return (
         <div className="game">
@@ -8,7 +8,7 @@ function Jogo(props) {
             <button onClick={startGame}>Escolher Palavra</button>
             {play &&
                 <div>
-                    {(newArrPalavra.length > 0) ? newArrPalavra.map(letra => <p className={victory}>{letra}</p>) : arrPalavra.map(() => <p>_</p>)}
+                    {(newArrPalavra.length > 0) ? newArrPalavra.map(letra => <p className={gameState}>{letra}</p>) : arrPalavra.map(() => <p>_</p>)}
                 </div>
             }
         </div>

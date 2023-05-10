@@ -19,12 +19,12 @@ let wrongCounter = 0;
 function App() {
 
   const [play, setPlay] = useState(false);
-  const [disableButton, setDisableButton] = useState(true);
+  const [disableButtons, setDisableButtons] = useState(true);
 
   const [newArrPalavra, setNewArrPalavra] = useState([]);
 
   const [forcaGuess, setForcaGuess] = useState(forca0);
-  const [victory, setVictory] = useState('black');
+  const [gameState, setGameState] = useState('black');
 //----------------------
 
   function startGame() {
@@ -35,12 +35,18 @@ function App() {
     console.log(palavra);
     arrPalavra = palavra.split('');
 
+    if (disableButtons === true) {
+      setDisableButtons(false);
+    } else {
+      setDisableButtons(true);
+      setTimeout(()=> setDisableButtons(false),1000);
+    }
+
     setPlay(true);
-    setDisableButton(false);
     wrongCounter = 0;
     setForcaGuess(forca0);
 
-    setVictory('black');
+    setGameState('black');
     setNewArrPalavra([]);
   }
   //-----
@@ -68,8 +74,8 @@ function App() {
       setForcaGuess(forcaImg[wrongCounter-1]);
     }
     if (wrongCounter === 6) {
-      setVictory('red');
-      setDisableButton(true);
+      setGameState('red');
+      setDisableButtons(true);
       setNewArrPalavra([...arrPalavra]);
     }
     //----------
@@ -80,8 +86,8 @@ function App() {
       }
     })
     if (counterRight === guessedArrPalavra.length) {
-      setVictory('green');
-      setDisableButton(true);
+      setGameState('green');
+      setDisableButtons(true);
     }
 }
 
@@ -89,8 +95,8 @@ function App() {
 
   return (
     <div className="body">
-        <Jogo play={play} newArrPalavra={newArrPalavra} arrPalavra={arrPalavra} startGame={startGame} victory={victory} forcaGuess={forcaGuess}/>
-        <Letras disableButton={disableButton} keyGuess={keyGuess} />
+        <Jogo play={play} newArrPalavra={newArrPalavra} arrPalavra={arrPalavra} startGame={startGame} gameState={gameState} forcaGuess={forcaGuess}/>
+        <Letras disableButtons={disableButtons} keyGuess={keyGuess} />
     </div>
   );
 }

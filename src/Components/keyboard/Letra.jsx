@@ -2,11 +2,11 @@ import { useState } from "react";
 
 function Letra(props) {
 
-    const {disableButton, keyGuess} = props.parentProps;
+    const {disableButtons, keyGuess} = props.parentProps;
     const {letra} = props;
 
     const [disableGuessedKey, setDisableGuessedKey] = useState(false);
-    const [toggleButton, setToggleButton] = useState(!disableButton);
+    const [toggleButton, setToggleButton] = useState(!disableButtons);
     
     function handleClick(event) {
         keyGuess(event);
@@ -18,8 +18,8 @@ function Letra(props) {
         <>
             <button
                 onClick={handleClick}
-                disabled={(disableButton === true) ? disableButton : toggleButton}
-                className={disableButton === !undefined ? "disabled" : ((disableGuessedKey === !true) ? "enabled" : 'disabled')}
+                disabled={(disableButtons === true) ? disableButtons : toggleButton}
+                className={disableButtons === !undefined ? "disabled" : ((disableGuessedKey === !true) ? "enabled" : 'disabled')}
             >{letra}</button>
         </>
     )
