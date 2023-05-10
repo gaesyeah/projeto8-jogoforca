@@ -1,5 +1,5 @@
 import Jogo from "./Jogo";
-import Letras from "./Letras";
+import Letras from "./keyboard/Letras";
 
 import { useState } from "react";
 import palavras from "../palavras";
@@ -10,7 +10,6 @@ function App() {
   const [play, setPlay] = useState(false);
   const [arrPalavra, setArrPalavra] = useState([]);
 
-  const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   const [enableButton, setEnableButton] = useState(true);
 
 //----------------------
@@ -49,7 +48,7 @@ function App() {
   return (
     <div className="body">
         <Jogo play={play} arrPalavra={arrPalavra} startGame={startGame}/>
-        <Letras enableButton={enableButton} alfabeto={alfabeto} keyGuess={keyGuess}/>
+        <Letras enableButton={enableButton} keyGuess={keyGuess}/>
     </div>
   );
 }
