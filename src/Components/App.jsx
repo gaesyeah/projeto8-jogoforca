@@ -20,7 +20,7 @@ function App() {
 
   const [play, setPlay] = useState(false);
   const [disableButtons, setDisableButtons] = useState(true);
-  const [resetKey, setResetKey] = useState(false);
+  const [resetElement, setResetElement] = useState('state1');
 
   const [newArrPalavra, setNewArrPalavra] = useState([]);
 
@@ -36,11 +36,11 @@ function App() {
     console.log(palavra);
     arrPalavra = palavra.split('');
 
-    if (disableButtons === true) {
-      setDisableButtons(false);
+    setDisableButtons(false);
+    if (resetElement === 'state1') {
+      setResetElement('state2');
     } else {
-      setDisableButtons(true);
-      setTimeout(()=> setDisableButtons(false),1000);
+      setResetElement('state1');
     }
 
     setPlay(true);
@@ -96,8 +96,15 @@ function App() {
 
   return (
     <div className="body">
-        <Jogo play={play} newArrPalavra={newArrPalavra} arrPalavra={arrPalavra} startGame={startGame} gameState={gameState} forcaGuess={forcaGuess}/>
-        <Letras disableButtons={disableButtons} keyGuess={keyGuess} />
+        <Jogo 
+          play={play} 
+          newArrPalavra={newArrPalavra} 
+          arrPalavra={arrPalavra} 
+          startGame={startGame} 
+          gameState={gameState} 
+          forcaGuess={forcaGuess} 
+        />
+        <Letras disableButtons={disableButtons} keyGuess={keyGuess} resetElement={resetElement}/>
     </div>
   );
 }
