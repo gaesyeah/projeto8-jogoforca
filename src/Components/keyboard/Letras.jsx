@@ -6,7 +6,7 @@ function Letras(props) {
 
     return (
         <div className="keyBoard">
-            {alfabeto.map(letra => <Letra letra={letra} ParentProps={props}/>)}
+            {alfabeto.map(letra => <Letra letra={letra} parentProps={props}/>)}
         </div>
     );
 }

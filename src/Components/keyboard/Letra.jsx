@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function Letra(props) {
 
-    const {enableButton, keyGuess} = props.ParentProps;
+    const {enableButton, keyGuess} = props.parentProps;
     const {letra} = props;
 
     const [disableGuessed, setDisableGuessed] = useState(false);
@@ -18,7 +18,7 @@ function Letra(props) {
         <>
             <button
                 onClick={handleClick}
-                disabled={disableButton}
+                disabled={(enableButton === true) ? enableButton : disableButton}
                 className={enableButton === !undefined ? "disabled" : ((disableGuessed === !true) ? "enabled" : 'disabled')}
             >{letra}</button>
         </>

@@ -53,6 +53,7 @@ function App() {
     })
     if (counter === guessedArrPalavra.length) {
       setVictory('green');
+      setEnableButton(true);
     }
 }
 
