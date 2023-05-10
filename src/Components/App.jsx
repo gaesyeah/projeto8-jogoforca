@@ -10,6 +10,8 @@ function App() {
   const [play, setPlay] = useState(false);
   const [arrPalavra, setArrPalavra] = useState([]);
 
+  const [testArrPalavra, setTestArrPalavra] = useState([]);
+
   const [enableButton, setEnableButton] = useState(true);
 //----------------------
 
@@ -40,13 +42,16 @@ function App() {
         }
     });
     console.log(guessedArrPalavra);
+    setTestArrPalavra([...guessedArrPalavra]);
+
+
 }
 
 //----------------------
 
   return (
     <div className="body">
-        <Jogo play={play} arrPalavra={arrPalavra} startGame={startGame} />
+        <Jogo play={play} testArrPalavra={testArrPalavra} arrPalavra={arrPalavra} startGame={startGame} />
         <Letras enableButton={enableButton} keyGuess={keyGuess} />
     </div>
   );
