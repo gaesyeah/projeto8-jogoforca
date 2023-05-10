@@ -11,7 +11,7 @@ function Jogo(props) {
                     {(newArrPalavra.length > 0) ? 
                         newArrPalavra.map((letra, i) => <p className={gameState} key={i}>{letra}</p>) 
                     : 
-                        arrPalavra.map((_,i) => <p key={i}>_</p>)}
+                        arrPalavra.map((letra,i) => <p key={`${letra}-${i}`}>_</p>)}
                 </div>
             }
         </div>
