@@ -8,7 +8,7 @@ function Jogo(props) {
             <button onClick={startGame}>Escolher Palavra</button>
             {play &&
                 <div>
-                    {(newArrPalavra.length > 0) ? newArrPalavra.map(letra => <p className={gameState}>{letra}</p>) : arrPalavra.map(() => <p>_</p>)}
+                    {(newArrPalavra.length > 0) ? newArrPalavra.map((letra, i) => <p className={gameState} key={i}>{letra}</p>) : arrPalavra.map((_,i) => <p key={i}>_</p>)}
                 </div>
             }
         </div>

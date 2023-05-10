@@ -20,6 +20,7 @@ function App() {
 
   const [play, setPlay] = useState(false);
   const [disableButtons, setDisableButtons] = useState(true);
+  const [resetKey, setResetKey] = useState(false);
 
   const [newArrPalavra, setNewArrPalavra] = useState([]);
 
