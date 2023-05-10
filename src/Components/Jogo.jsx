@@ -1,12 +1,10 @@
-import forca from '../assets/forca0.png'
-
 function Jogo(props) {
 
-    const {play, newArrPalavra, arrPalavra, startGame, victory} = props
+    const {play, newArrPalavra, arrPalavra, startGame, victory, forcaGuess} = props
 
     return (
         <div className="game">
-            <img src={forca} />
+            <img src={forcaGuess} />
             <button onClick={startGame}>Escolher Palavra</button>
             {play &&
                 <div>

@@ -4,8 +4,18 @@ import Letras from "./keyboard/Letras";
 import { useState } from "react";
 import palavras from "../palavras";
 
+import forca0 from '../assets/forca0.png';
+import forca1 from '../assets/forca1.png';
+import forca2 from '../assets/forca2.png';
+import forca3 from '../assets/forca3.png';
+import forca4 from '../assets/forca4.png';
+import forca5 from '../assets/forca5.png';
+import forca6 from '../assets/forca6.png';
+const forcaImg = [forca1, forca2, forca3, forca4, forca5, forca6];
+
 let guessedArrPalavra = [];
 let arrPalavra  = [];
+let wrongCounter = 0;
 function App() {
 
   const [play, setPlay] = useState(false);
@@ -13,6 +23,7 @@ function App() {
 
   const [newArrPalavra, setNewArrPalavra] = useState([]);
 
+  const [forcaGuess, setForcaGuess] = useState(forca0);
   const [victory, setVictory] = useState('black');
 //----------------------
 
@@ -26,6 +37,11 @@ function App() {
 
     setPlay(true);
     setDisableButton(false);
+    wrongCounter = 0;
+    setForcaGuess(forca0);
+
+    setVictory('black');
+    setNewArrPalavra([]);
   }
   //-----
   function keyGuess(event) {
@@ -36,22 +52,34 @@ function App() {
       console.log(guessedArrPalavra);
     }
 
+    let rightGuess = false;
     arrPalavra.forEach((letra, i) => {
         if (letra === keyPressed) {
           console.log(`Letra: ${letra}\nIndice: ${i}`);
           guessedArrPalavra[i] = letra;
+          rightGuess = true;
         }
     });
     console.log(guessedArrPalavra);
     setNewArrPalavra([...guessedArrPalavra]);
-    //---
-    let counter = 0;
+    //----------
+    if (rightGuess === false) {
+      wrongCounter++
+      setForcaGuess(forcaImg[wrongCounter-1]);
+    }
+    if (wrongCounter === 6) {
+      setVictory('red');
+      setDisableButton(true);
+      setNewArrPalavra([...arrPalavra]);
+    }
+    //----------
+    let counterRight = 0;
     guessedArrPalavra.forEach((palavra, i) => {
       if (palavra === arrPalavra[i]) {
-        counter++
+        counterRight++
       }
     })
-    if (counter === guessedArrPalavra.length) {
+    if (counterRight === guessedArrPalavra.length) {
       setVictory('green');
       setDisableButton(true);
     }
@@ -61,7 +89,7 @@ function App() {
 
   return (
     <div className="body">
-        <Jogo play={play} newArrPalavra={newArrPalavra} arrPalavra={arrPalavra} startGame={startGame} victory={victory}/>
+        <Jogo play={play} newArrPalavra={newArrPalavra} arrPalavra={arrPalavra} startGame={startGame} victory={victory} forcaGuess={forcaGuess}/>
         <Letras disableButton={disableButton} keyGuess={keyGuess} />
     </div>
   );
