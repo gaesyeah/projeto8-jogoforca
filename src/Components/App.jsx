@@ -43,6 +43,16 @@ function App() {
     });
     console.log(guessedArrPalavra);
     setNewArrPalavra([...guessedArrPalavra]);
+    //---
+    let counter = 0;
+    guessedArrPalavra.forEach((palavra, i) => {
+      if (palavra === arrPalavra[i]) {
+        counter++
+      }
+    })
+    if (counter === guessedArrPalavra.length) {
+      setTimeout(() => alert('vitoria'),1)
+    }
 }
 
 //----------------------
