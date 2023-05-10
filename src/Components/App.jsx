@@ -11,7 +11,6 @@ function App() {
   const [arrPalavra, setArrPalavra] = useState([]);
 
   const [enableButton, setEnableButton] = useState(true);
-
 //----------------------
 
   function startGame() {
@@ -47,8 +46,8 @@ function App() {
 
   return (
     <div className="body">
-        <Jogo play={play} arrPalavra={arrPalavra} startGame={startGame}/>
-        <Letras enableButton={enableButton} keyGuess={keyGuess}/>
+        <Jogo play={play} arrPalavra={arrPalavra} startGame={startGame} />
+        <Letras enableButton={enableButton} keyGuess={keyGuess} />
     </div>
   );
 }
