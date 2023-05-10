@@ -19,7 +19,7 @@ function Letra(props) {
             <button
                 onClick={handleClick}
                 disabled={disableButton}
-                className={(disableGuessed === !true) ? (enableButton === !undefined ? "disabled" : "enabled") : "disabled"}
+                className={enableButton === !undefined ? "disabled" : ((disableGuessed === !true) ? "enabled" : 'disabled')}
             >{letra}</button>
         </>
     )
