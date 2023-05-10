@@ -9,10 +9,11 @@ let arrPalavra  = [];
 function App() {
 
   const [play, setPlay] = useState(false);
+  const [enableButton, setEnableButton] = useState(true);
 
   const [newArrPalavra, setNewArrPalavra] = useState([]);
 
-  const [enableButton, setEnableButton] = useState(true);
+  const [victory, setVictory] = useState('black');
 //----------------------
 
   function startGame() {
@@ -51,7 +52,7 @@ function App() {
       }
     })
     if (counter === guessedArrPalavra.length) {
-      setTimeout(() => alert('vitoria'),1)
+      setVictory('green');
     }
 }
 
@@ -59,7 +60,7 @@ function App() {
 
   return (
     <div className="body">
-        <Jogo play={play} newArrPalavra={newArrPalavra} arrPalavra={arrPalavra} startGame={startGame} />
+        <Jogo play={play} newArrPalavra={newArrPalavra} arrPalavra={arrPalavra} startGame={startGame} victory={victory}/>
         <Letras enableButton={enableButton} keyGuess={keyGuess} />
     </div>
   );

@@ -32,7 +32,6 @@ img {
     font-family: 'Noto Sans';
     font-size: 50px;
     line-height: 68px;
-    color: #000000;
 }
 .game button {
     position: absolute;
@@ -83,4 +82,10 @@ img {
     border: 1px solid #7AA7C7;
 
     color: #798A9F;
+}
+.black {
+    color: #000000;
+}
+.green {
+    color: #27AE60;
 }
