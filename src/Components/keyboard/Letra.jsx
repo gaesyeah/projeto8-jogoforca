@@ -16,18 +16,12 @@ function Letra(props) {
 
     return (
         <>
-            {disableButtons === true ?
-                <button
-                    disabled={true}
-                    className={'disabled'}
-                >{letra}</button> 
-            :
-                <button
+            <button
+                id={resetElement}
                 onClick={handleClick}
-                disabled={disableGuessedKey}
-                className={toggleButton}
-                >{letra}</button>
-            }
+                disabled={disableButtons === true ? true : disableGuessedKey}
+                className={disableButtons === true ? 'disabled': toggleButton}
+            >{letra}</button> 
         </>
     )
 }
