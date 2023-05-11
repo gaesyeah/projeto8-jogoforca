@@ -76,13 +76,7 @@ function App() {
       setNewArrPalavra([...arrPalavra]);
     }
     //----------
-    let counterRight = 0;
-    guessedArrPalavra.forEach((palavra, i) => {
-      if (palavra === arrPalavra[i]) {
-        counterRight++;
-      }
-    })
-    if (counterRight === guessedArrPalavra.length) {
+    if (guessedArrPalavra.join('') === arrPalavra.join('')) {
       setGameState('green');
       setDisableAllButtons(true);
     }
