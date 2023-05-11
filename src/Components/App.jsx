@@ -90,6 +90,7 @@ function App() {
         setGameState('red');
         setForcaGuess(forcaImg[6]);
       }
+      setInputValue('');
     }
   }
   function inputChange(event) {
@@ -100,8 +101,8 @@ function App() {
   return (
     <div className="body">
         <Jogo 
-          newArrPalavra={newArrPalavra} 
           arrPalavra={arrPalavra} 
+          newArrPalavra={newArrPalavra} 
           startGame={startGame} 
           gameState={gameState} 
           forcaGuess={forcaGuess} 
@@ -114,7 +115,8 @@ function App() {
         <Chute 
           disableAllButtons={disableAllButtons}
           inputChange={inputChange}
-          inputGuess={inputGuess} 
+          inputGuess={inputGuess}
+          inputValue={inputValue}
         />
     </div>
   );

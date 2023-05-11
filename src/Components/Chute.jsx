@@ -1,11 +1,12 @@
 function Jogo(props) {
 
-    const {disableAllButtons, inputGuess, inputChange} = props;
+    const {disableAllButtons, inputGuess, inputChange, inputValue} = props;
 
     return (
         <div className="chute">
             <p>Já sei a palavra!</p>
             <input
+                value={inputValue}
                 onChange={inputChange}
                 disabled={disableAllButtons === false ? false : true}
             ></input>
