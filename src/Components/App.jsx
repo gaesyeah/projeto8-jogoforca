@@ -1,5 +1,5 @@
 import Jogo from "./Jogo";
-import Letras from "./keyboard/Letras";
+import Letras from "./Letras/Letras";
 
 import { useState } from "react";
 import palavras from "../palavras";
@@ -19,8 +19,8 @@ let wrongCounter = 0;
 function App() {
 
   const [play, setPlay] = useState(false);
-  const [disableButtons, setDisableButtons] = useState(true);
-  const [toggleButton, setToggleButton] = useState([]);
+  const [disableAllButtons, setDisableAllButtons] = useState(true);
+  const [arrGuessedButton, setArrGuessedButton] = useState([]);
 
   const [newArrPalavra, setNewArrPalavra] = useState([]);
 
@@ -36,8 +36,8 @@ function App() {
     console.log(palavra);
     arrPalavra = palavra.split('');
 
-    setDisableButtons(false);
-    setToggleButton([]);
+    setDisableAllButtons(false);
+    setArrGuessedButton([]);
 
     setPlay(true);
     wrongCounter = 0;
@@ -47,8 +47,8 @@ function App() {
     setNewArrPalavra([]);
   }
   //-----
-  function keyGuess(event) {
-    const keyPressed = event.target.textContent;
+  function buttonGuess(event) {
+    const buttonPressed = event.target.textContent;
     
     if (guessedArrPalavra.length === 0) {
       guessedArrPalavra = Array(arrPalavra.length).fill('_');
@@ -57,7 +57,7 @@ function App() {
 
     let rightGuess = false;
     arrPalavra.forEach((letra, i) => {
-        if (letra === keyPressed) {
+        if (letra === buttonPressed) {
           console.log(`Letra: ${letra}\nIndice: ${i}`);
           guessedArrPalavra[i] = letra;
           rightGuess = true;
@@ -72,7 +72,7 @@ function App() {
     }
     if (wrongCounter === 6) {
       setGameState('red');
-      setDisableButtons(true);
+      setDisableAllButtons(true);
       setNewArrPalavra([...arrPalavra]);
     }
     //----------
@@ -84,7 +84,7 @@ function App() {
     })
     if (counterRight === guessedArrPalavra.length) {
       setGameState('green');
-      setDisableButtons(true);
+      setDisableAllButtons(true);
     }
 }
 
@@ -100,7 +100,7 @@ function App() {
           gameState={gameState} 
           forcaGuess={forcaGuess} 
         />
-        <Letras disableButtons={disableButtons} keyGuess={keyGuess} toggleButton={[toggleButton, setToggleButton]}/>
+        <Letras disableAllButtons={disableAllButtons} buttonGuess={buttonGuess} arrGuessedButton={[arrGuessedButton, setArrGuessedButton]}/>
     </div>
   );
 }
