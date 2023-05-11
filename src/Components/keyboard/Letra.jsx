@@ -1,6 +1,7 @@
 function Letra(props) {
 
-    const {disableButtons, keyGuess, toggleButton, setToggleButton} = props.parentProps;
+    const {disableButtons, keyGuess} = props.parentProps;
+    const [toggleButton, setToggleButton] = props.parentProps.toggleButton;
     const [letra, i] = props.mapParameters;
     
     function handleClick(event) {

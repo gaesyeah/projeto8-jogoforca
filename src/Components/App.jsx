@@ -100,7 +100,7 @@ function App() {
           gameState={gameState} 
           forcaGuess={forcaGuess} 
         />
-        <Letras disableButtons={disableButtons} keyGuess={keyGuess} toggleButton={toggleButton} setToggleButton={setToggleButton}/>
+        <Letras disableButtons={disableButtons} keyGuess={keyGuess} toggleButton={[toggleButton, setToggleButton]}/>
     </div>
   );
 }
