@@ -2,6 +2,7 @@ import Jogo from "./Jogo";
 import Letras from "./Letras/Letras";
 import Chute from "./Chute";
 
+import _ from 'lodash';
 import { useState } from "react";
 import palavras from "../palavras";
 
@@ -28,7 +29,7 @@ function App() {
   const [gameState, setGameState] = useState('black');
 
   const [inputValue, setInputValue] = useState('');
-//----------------------
+//-----------------------------
 
   function startGame() {    
     const newPalavras = palavras.sort(() => Math.random() - 0.5);
@@ -46,13 +47,13 @@ function App() {
     setGameState('black');
     setNewArrPalavra([]);
   }
-  //-----------
+  //-----------------
   function buttonGuess(event) {
     const buttonPressed = event.target.textContent;
 
     let rightGuess = false;
     arrPalavra.forEach((letra, i) => {
-        if (letra === buttonPressed) {
+        if (_.deburr(letra) === buttonPressed) {
           console.log(`Letra: ${letra}\nIndice: ${i}`);
           guessedArrPalavra[i] = letra;
           rightGuess = true;
@@ -60,7 +61,7 @@ function App() {
     });
     console.log(guessedArrPalavra);
     setNewArrPalavra([...guessedArrPalavra]);
-    //-------
+    //-----
     if (rightGuess === false) {
       wrongCounter++;
       setForcaGuess(forcaImg[wrongCounter]);
@@ -70,18 +71,18 @@ function App() {
       setDisableAllButtons(true);
       setNewArrPalavra([...arrPalavra]);
     }
-    //-------
+    //-----
     if (guessedArrPalavra.join('') === arrPalavra.join('')) {
       setGameState('green');
       setDisableAllButtons(true);
     }
   }
-  //-----------
+  //-----------------
   function inputGuess() {
     if (!inputValue) {
       alert('Digite uma palavra para poder chutar');
     } else {
-      if (inputValue === arrPalavra.join('')) {
+      if (inputValue === _.deburr(arrPalavra.join(''))) {
         setGameState('green');
         setNewArrPalavra([...arrPalavra]);
         setDisableAllButtons(true);
@@ -97,8 +98,7 @@ function App() {
     setInputValue(event.target.value);
   }
 
-//----------------------
-
+//-----------------------------
   return (
     <div className="body">
         <Jogo 
