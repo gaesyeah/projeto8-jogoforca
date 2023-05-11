@@ -34,7 +34,7 @@ function App() {
   function startGame() {    
     const newPalavras = palavras.sort(() => Math.random() - 0.5);
     const palavra = newPalavras[0];
-    console.log(palavra);
+    /* console.log(palavra); */
     arrPalavra = palavra.split('');
     guessedArrPalavra = Array(arrPalavra.length).fill('_');
 
@@ -54,12 +54,12 @@ function App() {
     let rightGuess = false;
     arrPalavra.forEach((letra, i) => {
         if (_.deburr(letra) === buttonPressed) {
-          console.log(`Letra: ${letra}\nIndice: ${i}`);
+          /* console.log(`Letra: ${letra}\nIndice: ${i}`); */
           guessedArrPalavra[i] = letra;
           rightGuess = true;
         }
     });
-    console.log(guessedArrPalavra);
+    /* console.log(guessedArrPalavra); */
     setNewArrPalavra([...guessedArrPalavra]);
     //-----
     if (rightGuess === false) {
