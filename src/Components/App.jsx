@@ -82,14 +82,12 @@ function App() {
     if (!inputValue) {
       alert('Digite uma palavra para poder chutar');
     } else {
+      setNewArrPalavra([...arrPalavra]);
+      setDisableAllButtons(true);
       if (inputValue === _.deburr(arrPalavra.join(''))) {
         setGameState('green');
-        setNewArrPalavra([...arrPalavra]);
-        setDisableAllButtons(true);
       } else {
         setGameState('red');
-        setNewArrPalavra([...arrPalavra]);
-        setDisableAllButtons(true);
         setForcaGuess(forcaImg[6]);
       }
     }
