@@ -124,9 +124,10 @@ img {
     line-height: 23px;
     color: #000000;
 }
-.chute button{
+.chuteEnabled{
+    cursor: pointer;
     width: 100px;
-    height: 40px;
+    height: 44px;
     background: #E1ECF4;
     border: 1px solid #7AA7C7;
     border-radius: 3px;
@@ -134,4 +135,15 @@ img {
     font-size: 16px;
     line-height: 19px;
     color: #3C76A1;
+}
+.chuteDisabled{
+    width: 100px;
+    height: 44px;
+    background: #9FAAB5;
+    border: 1px solid #7AA7C7;
+    border-radius: 3px;
+
+    font-size: 16px;
+    line-height: 19px;
+    color: #798A9F;
 }

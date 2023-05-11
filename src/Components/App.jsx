@@ -19,7 +19,6 @@ let arrPalavra  = [];
 let wrongCounter = 0;
 function App() {
 
-  const [play, setPlay] = useState(false);
   const [disableAllButtons, setDisableAllButtons] = useState(true);
   const [arrGuessedButton, setArrGuessedButton] = useState([]);
 
@@ -27,6 +26,8 @@ function App() {
 
   const [forcaGuess, setForcaGuess] = useState(forcaImg[0]);
   const [gameState, setGameState] = useState('black');
+
+  const [inputValue, setInputValue] = useState('');
 //----------------------
 
   function startGame() {    
@@ -45,7 +46,7 @@ function App() {
     setGameState('black');
     setNewArrPalavra([]);
   }
-  //-----
+  //-----------
   function buttonGuess(event) {
     const buttonPressed = event.target.textContent;
 
@@ -59,7 +60,7 @@ function App() {
     });
     console.log(guessedArrPalavra);
     setNewArrPalavra([...guessedArrPalavra]);
-    //----------
+    //-------
     if (rightGuess === false) {
       wrongCounter++;
       setForcaGuess(forcaImg[wrongCounter]);
@@ -69,12 +70,32 @@ function App() {
       setDisableAllButtons(true);
       setNewArrPalavra([...arrPalavra]);
     }
-    //----------
+    //-------
     if (guessedArrPalavra.join('') === arrPalavra.join('')) {
       setGameState('green');
       setDisableAllButtons(true);
     }
-}
+  }
+  //-----------
+  function inputGuess() {
+    if (!inputValue) {
+      alert('Digite uma palavra para poder chutar');
+    } else {
+      if (inputValue === arrPalavra.join('')) {
+        setGameState('green');
+        setNewArrPalavra([...arrPalavra]);
+        setDisableAllButtons(true);
+      } else {
+        setGameState('red');
+        setNewArrPalavra([...arrPalavra]);
+        setDisableAllButtons(true);
+        setForcaGuess(forcaImg[6]);
+      }
+    }
+  }
+  function inputChange(event) {
+    setInputValue(event.target.value);
+  }
 
 //----------------------
 
@@ -92,7 +113,11 @@ function App() {
           buttonGuess={buttonGuess} 
           arrGuessedButton={[arrGuessedButton, setArrGuessedButton]}
         />
-        <Chute />
+        <Chute 
+          disableAllButtons={disableAllButtons}
+          inputChange={inputChange}
+          inputGuess={inputGuess} 
+        />
     </div>
   );
 }
