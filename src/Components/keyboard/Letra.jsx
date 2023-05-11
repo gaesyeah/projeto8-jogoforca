@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 function Letra(props) {
 
     const {disableButtons, keyGuess, toggleButton, setToggleButton} = props.parentProps;
