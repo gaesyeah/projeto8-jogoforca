@@ -67,7 +67,7 @@ function App() {
     setNewArrPalavra([...guessedArrPalavra]);
     //----------
     if (rightGuess === false) {
-      wrongCounter++
+      wrongCounter++;
       setForcaGuess(forcaImg[wrongCounter]);
     }
     if (wrongCounter === 6) {
@@ -79,7 +79,7 @@ function App() {
     let counterRight = 0;
     guessedArrPalavra.forEach((palavra, i) => {
       if (palavra === arrPalavra[i]) {
-        counterRight++
+        counterRight++;
       }
     })
     if (counterRight === guessedArrPalavra.length) {
