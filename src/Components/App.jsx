@@ -11,7 +11,7 @@ import forca3 from '../assets/forca3.png';
 import forca4 from '../assets/forca4.png';
 import forca5 from '../assets/forca5.png';
 import forca6 from '../assets/forca6.png';
-const forcaImg = [forca1, forca2, forca3, forca4, forca5, forca6];
+const forcaImg = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
 
 let guessedArrPalavra = [];
 let arrPalavra  = [];
@@ -24,7 +24,7 @@ function App() {
 
   const [newArrPalavra, setNewArrPalavra] = useState([]);
 
-  const [forcaGuess, setForcaGuess] = useState(forca0);
+  const [forcaGuess, setForcaGuess] = useState(forcaImg[0]);
   const [gameState, setGameState] = useState('black');
 //----------------------
 
@@ -41,7 +41,7 @@ function App() {
 
     setPlay(true);
     wrongCounter = 0;
-    setForcaGuess(forca0);
+    setForcaGuess(forcaImg[0]);
 
     setGameState('black');
     setNewArrPalavra([]);
@@ -68,7 +68,7 @@ function App() {
     //----------
     if (rightGuess === false) {
       wrongCounter++
-      setForcaGuess(forcaImg[wrongCounter-1]);
+      setForcaGuess(forcaImg[wrongCounter]);
     }
     if (wrongCounter === 6) {
       setGameState('red');
