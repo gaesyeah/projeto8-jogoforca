@@ -20,7 +20,7 @@ function App() {
 
   const [play, setPlay] = useState(false);
   const [disableButtons, setDisableButtons] = useState(true);
-  const [resetKey, setResetKey] = useState('state1');
+  const [toggleButton, setToggleButton] = useState([]);
 
   const [newArrPalavra, setNewArrPalavra] = useState([]);
 
@@ -37,11 +37,7 @@ function App() {
     arrPalavra = palavra.split('');
 
     setDisableButtons(false);
-    if (resetKey === 'state1') {
-      setResetKey('state2');
-    } else {
-      setResetKey('state1');
-    }
+    setToggleButton([]);
 
     setPlay(true);
     wrongCounter = 0;
@@ -104,7 +100,7 @@ function App() {
           gameState={gameState} 
           forcaGuess={forcaGuess} 
         />
-        <Letras disableButtons={disableButtons} keyGuess={keyGuess} resetKey={resetKey}/>
+        <Letras disableButtons={disableButtons} keyGuess={keyGuess} toggleButton={toggleButton} setToggleButton={setToggleButton}/>
     </div>
   );
 }

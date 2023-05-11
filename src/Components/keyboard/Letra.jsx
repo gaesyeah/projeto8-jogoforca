@@ -2,25 +2,20 @@ import { useState } from "react";
 
 function Letra(props) {
 
-    const {disableButtons, keyGuess, resetKey} = props.parentProps;
-    const {letra} = props;
-
-    const [disableGuessedKey, setDisableGuessedKey] = useState(false);
-    const [toggleButton, setToggleButton] = useState('enabled');
+    const {disableButtons, keyGuess, toggleButton, setToggleButton} = props.parentProps;
+    const [letra, i] = props.mapParameters;
     
     function handleClick(event) {
         keyGuess(event);
-        setDisableGuessedKey(true);
-        setToggleButton('disabled');
+        setToggleButton([...toggleButton, i]);
     }
 
     return (
         <>
             <button
-                id={resetKey}
                 onClick={handleClick}
-                disabled={disableButtons === true ? true : disableGuessedKey}
-                className={disableButtons === true ? 'disabled': toggleButton}
+                disabled={toggleButton.includes(i) ? true : (disableButtons === false ? false : true)}
+                className={toggleButton.includes(i) ? 'disabled' : (disableButtons === false ? 'enabled' : 'disabled')}
             >{letra}</button> 
         </>
     )
