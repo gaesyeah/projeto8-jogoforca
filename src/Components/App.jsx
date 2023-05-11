@@ -38,7 +38,6 @@ function App() {
     setDisableAllButtons(false);
     setArrGuessedButton([]);
 
-    setPlay(true);
     wrongCounter = 0;
     setForcaGuess(forcaImg[0]);
 
@@ -81,14 +80,17 @@ function App() {
   return (
     <div className="body">
         <Jogo 
-          play={play} 
           newArrPalavra={newArrPalavra} 
           arrPalavra={arrPalavra} 
           startGame={startGame} 
           gameState={gameState} 
           forcaGuess={forcaGuess} 
         />
-        <Letras disableAllButtons={disableAllButtons} buttonGuess={buttonGuess} arrGuessedButton={[arrGuessedButton, setArrGuessedButton]}/>
+        <Letras 
+          disableAllButtons={disableAllButtons} 
+          buttonGuess={buttonGuess} 
+          arrGuessedButton={[arrGuessedButton, setArrGuessedButton]}
+        />
     </div>
   );
 }
