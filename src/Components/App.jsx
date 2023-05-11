@@ -1,5 +1,6 @@
 import Jogo from "./Jogo";
 import Letras from "./Letras/Letras";
+import Chute from "./Chute";
 
 import { useState } from "react";
 import palavras from "../palavras";
@@ -91,6 +92,7 @@ function App() {
           buttonGuess={buttonGuess} 
           arrGuessedButton={[arrGuessedButton, setArrGuessedButton]}
         />
+        <Chute />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -94,4 +94,44 @@ img {
 }
 .red {
     color: #FF0000;
+}
+
+.chute{
+    margin-left: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 205px;
+}
+.chute p{
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+}
+.chute input{
+    margin-left: 12px;
+    margin-right: 15px;
+    width: 353px;
+    height: 40px;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+}
+.chute button{
+    width: 100px;
+    height: 40px;
+    background: #E1ECF4;
+    border: 1px solid #7AA7C7;
+    border-radius: 3px;
+
+    font-size: 16px;
+    line-height: 19px;
+    color: #3C76A1;
 }
