@@ -28,13 +28,12 @@ function App() {
   const [gameState, setGameState] = useState('black');
 //----------------------
 
-  function startGame() {
-    guessedArrPalavra = [];
-    
+  function startGame() {    
     const newPalavras = palavras.sort(() => Math.random() - 0.5);
     const palavra = newPalavras[0];
     console.log(palavra);
     arrPalavra = palavra.split('');
+    guessedArrPalavra = Array(arrPalavra.length).fill('_');
 
     setDisableAllButtons(false);
     setArrGuessedButton([]);
@@ -49,11 +48,6 @@ function App() {
   //-----
   function buttonGuess(event) {
     const buttonPressed = event.target.textContent;
-    
-    if (guessedArrPalavra.length === 0) {
-      guessedArrPalavra = Array(arrPalavra.length).fill('_');
-      console.log(guessedArrPalavra);
-    }
 
     let rightGuess = false;
     arrPalavra.forEach((letra, i) => {
