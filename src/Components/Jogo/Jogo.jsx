@@ -10,8 +10,7 @@ function Jogo(props) {
             <button onClick={startGame}>Escolher Palavra</button>
             <div className={gameState}>
                 {guessedArrPalavra.map((letra, i) => 
-                    <LetraJogo map={[guessedArrPalavra,letra]} gameState={gameState} key={`${letra}[${i}]`}/>
-                    )
+                    <LetraJogo map={[guessedArrPalavra,letra]} gameState={gameState} key={`${letra}[${i}]`}/>)
                 }
             </div>
         </div>
