@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+*{
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     display: flex;
@@ -124,26 +128,21 @@ img {
     line-height: 23px;
     color: #000000;
 }
-.chuteEnabled{
-    cursor: pointer;
+.chute button{
     width: 100px;
-    height: 44px;
-    background: #E1ECF4;
+    height: 40px;
     border: 1px solid #7AA7C7;
     border-radius: 3px;
-
     font-size: 16px;
     line-height: 19px;
+}
+.chuteEnabled{
+    cursor: pointer;
+    background: #E1ECF4;
     color: #3C76A1;
 }
 .chuteDisabled{
-    width: 100px;
-    height: 44px;
+    cursor:default;
     background: #9FAAB5;
-    border: 1px solid #7AA7C7;
-    border-radius: 3px;
-
-    font-size: 16px;
-    line-height: 19px;
     color: #798A9F;
 }
