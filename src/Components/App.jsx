@@ -15,15 +15,14 @@ import forca5 from '../assets/forca5.png';
 import forca6 from '../assets/forca6.png';
 const forcaImg = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
 
-let guessedArrPalavra = [];
-let arrPalavra  = [];
-let wrongCounter = 0;
+let wrongCounter;
+let arrPalavra;
 function App() {
 
   const [disableAllButtons, setDisableAllButtons] = useState(true);
   const [arrGuessedButton, setArrGuessedButton] = useState([]);
 
-  const [newArrPalavra, setNewArrPalavra] = useState([]);
+  const [guessedArrPalavra, setGuessedArrPalavra] = useState([]);
 
   const [forcaGuess, setForcaGuess] = useState(forcaImg[0]);
   const [gameState, setGameState] = useState('black');
@@ -31,37 +30,38 @@ function App() {
   const [inputValue, setInputValue] = useState('');
 //-----------------------------
 
-  function startGame() {    
+  function startGame() {
+    wrongCounter = 0;
+
     const newPalavras = palavras.sort(() => Math.random() - 0.5);
-    const palavra = newPalavras[0];
-    /* console.log(palavra); */
-    arrPalavra = palavra.split('');
-    guessedArrPalavra = Array(arrPalavra.length).fill('_');
+    arrPalavra = newPalavras[0].split('');
+    /* console.log(arrPalavra); */
+    setGuessedArrPalavra(Array(arrPalavra.length).fill('_'));
 
     setDisableAllButtons(false);
     setArrGuessedButton([]);
 
-    wrongCounter = 0;
-    setForcaGuess(forcaImg[0]);
-
     setGameState('black');
-    setNewArrPalavra([]);
+    setForcaGuess(forcaImg[0]);
   }
-  //-----------------
+  //--------------
   function buttonGuess(event) {
     const buttonPressed = event.target.textContent;
+
+    const TEMPguessedArrPalavra = [...guessedArrPalavra];
 
     let rightGuess = false;
     arrPalavra.forEach((letra, i) => {
         if (_.deburr(letra) === buttonPressed) {
           /* console.log(`Letra: ${letra}\nIndice: ${i}`); */
-          guessedArrPalavra[i] = letra;
+          TEMPguessedArrPalavra[i] = letra;
           rightGuess = true;
         }
     });
-    /* console.log(guessedArrPalavra); */
-    setNewArrPalavra([...guessedArrPalavra]);
-    //-----
+    /* console.log(TEMPguessedArrPalavra); */
+    setGuessedArrPalavra([...TEMPguessedArrPalavra]);
+    //----
+    //para verificar a quantidade de erros
     if (rightGuess === false) {
       wrongCounter++;
       setForcaGuess(forcaImg[wrongCounter]);
@@ -69,20 +69,21 @@ function App() {
     if (wrongCounter === 6) {
       setGameState('red');
       setDisableAllButtons(true);
-      setNewArrPalavra([...arrPalavra]);
+      setGuessedArrPalavra([...arrPalavra]);
     }
-    //-----
-    if (guessedArrPalavra.join('') === arrPalavra.join('')) {
+    //para verificar o acerto
+    if (TEMPguessedArrPalavra.join('') === arrPalavra.join('')) {
       setGameState('green');
       setDisableAllButtons(true);
     }
   }
-  //-----------------
+  //--------------
   function inputGuess() {
+
     if (!inputValue) {
       alert('Digite uma palavra para poder chutar');
     } else {
-      setNewArrPalavra([...arrPalavra]);
+      setGuessedArrPalavra([...arrPalavra]);
       setDisableAllButtons(true);
       if (inputValue === _.deburr(arrPalavra.join(''))) {
         setGameState('green');
@@ -100,10 +101,9 @@ function App() {
 //-----------------------------
   return (
     <div className="body">
-        <Jogo 
-          arrPalavra={arrPalavra} 
-          newArrPalavra={newArrPalavra} 
-          startGame={startGame} 
+        <Jogo
+          startGame={startGame}
+          guessedArrPalavra={guessedArrPalavra}  
           gameState={gameState} 
           forcaGuess={forcaGuess} 
         />

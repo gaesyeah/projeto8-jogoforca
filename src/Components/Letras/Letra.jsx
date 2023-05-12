@@ -4,7 +4,7 @@ function Letra(props) {
     const [arrGuessedButton, setArrGuessedButton] = props.parentProps.arrGuessedButton;
     const {letra} = props;
     
-    function handleClick(event) {
+    function guessClick(event) {
         buttonGuess(event);
         setArrGuessedButton([...arrGuessedButton, letra]);
     }
@@ -12,7 +12,7 @@ function Letra(props) {
     return (
         <>
             <button
-                onClick={handleClick}
+                onClick={guessClick}
                 disabled={arrGuessedButton.includes(letra) ? true : (disableAllButtons === false ? false : true)}
                 className={arrGuessedButton.includes(letra) ? 'disabled' : (disableAllButtons === false ? 'enabled' : 'disabled')}
             >{letra}</button> 
