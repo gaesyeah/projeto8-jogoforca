@@ -1,16 +1,16 @@
 function Jogo(props) {
 
-    const {startGame, guessedArrPalavra, gameState, forcaGuess} = props;
+    const {startGame, arrPalavra, guessedArrPalavra, gameState, forcaGuess} = props;
+    const palavra = arrPalavra.join('');
+    const guessedPalavra = guessedArrPalavra.join('');
 
     return (
         <div className="game">
             <img src={forcaGuess} />
             <button onClick={startGame}>Escolher Palavra</button>
-            <div className={gameState}>
-                {guessedArrPalavra.map((letra, i) => 
-                    <p key={`${letra}[${i}]`}>{letra}</p>)
-                }
-            </div>
+            <p className={`${gameState} ${guessedPalavra === palavra ? ' final': ' guessing'}`}>
+                {guessedPalavra}
+            </p>
         </div>
     );
 }

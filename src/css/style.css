@@ -25,17 +25,19 @@ img {
     height: 839px;
     position: relative;
 }
-.game div {
+.game p {
     position: absolute;
     right: 61px;
     top: 431px;
-    display: flex;
-    gap: 8px;
-}
-.game div p {
     font-family: 'Noto Sans';
     font-size: 50px;
     line-height: 68px;
+}
+.guessing {
+    letter-spacing: 11px;
+}
+.final {
+    letter-spacing: normal;
 }
 .game button {
     position: absolute;

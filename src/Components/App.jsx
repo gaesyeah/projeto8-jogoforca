@@ -106,6 +106,7 @@ function App() {
     <div className="body">
         <Jogo
           startGame={startGame}
+          arrPalavra={arrPalavra}
           guessedArrPalavra={guessedArrPalavra}  
           gameState={gameState} 
           forcaGuess={forcaGuess} 
