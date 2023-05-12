@@ -8,8 +8,11 @@ function Jogo(props) {
         <div className="game">
             <img src={forcaGuess} />
             <button onClick={startGame}>Escolher Palavra</button>
-            <div>{guessedArrPalavra.map((letra, i) => 
-                <LetraJogo map={[guessedArrPalavra,letra]} gameState={gameState} key={`${letra}[${i}]`}/>)}
+            <div className={gameState}>
+                {guessedArrPalavra.map((letra, i) => 
+                    <LetraJogo map={[guessedArrPalavra,letra]} gameState={gameState} key={`${letra}[${i}]`}/>
+                    )
+                }
             </div>
         </div>
     );
