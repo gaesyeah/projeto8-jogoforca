@@ -4,8 +4,8 @@ function Letra(props) {
     const [arrGuessedButton, setArrGuessedButton] = props.parentProps.arrGuessedButton;
     const {letra} = props;
     
-    function guessClick(event) {
-        buttonGuess(event);
+    function guessClick() {
+        buttonGuess(letra);
         setArrGuessedButton([...arrGuessedButton, letra]);
     }
 

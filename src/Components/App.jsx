@@ -49,14 +49,13 @@ function App() {
     }
   }
   //--------------
-  function buttonGuess(event) {
-    const buttonPressed = event.target.textContent;
+  function buttonGuess(letraFromMap) {
 
     const TEMPguessedArrPalavra = [...guessedArrPalavra];
 
     let rightGuess = false;
     arrPalavra.forEach((letra, i) => {
-        if (buttonPressed === _.deburr(letra)) {
+        if (letraFromMap === _.deburr(letra)) {
           /* console.log(`Letra: ${letra}\nIndice: ${i}`); */
           TEMPguessedArrPalavra[i] = letra;
           rightGuess = true;
