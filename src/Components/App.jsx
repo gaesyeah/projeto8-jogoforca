@@ -1,4 +1,4 @@
-import Jogo from "./Jogo/Jogo";
+import Jogo from "./Jogo";
 import Letras from "./Letras/Letras";
 import Chute from "./Chute";
 
