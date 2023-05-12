@@ -56,7 +56,7 @@ function App() {
 
     let rightGuess = false;
     arrPalavra.forEach((letra, i) => {
-        if (_.deburr(letra) === buttonPressed) {
+        if (buttonPressed === _.deburr(letra)) {
           /* console.log(`Letra: ${letra}\nIndice: ${i}`); */
           TEMPguessedArrPalavra[i] = letra;
           rightGuess = true;
