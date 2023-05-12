@@ -1,3 +1,5 @@
+import LetraJogo from "./LetraJogo";
+
 function Jogo(props) {
 
     const {startGame, guessedArrPalavra, gameState, forcaGuess} = props;
@@ -7,13 +9,7 @@ function Jogo(props) {
             <img src={forcaGuess} />
             <button onClick={startGame}>Escolher Palavra</button>
             <div>{guessedArrPalavra.map((letra, i) => 
-                <p                      
-                    key={`${letra}-${i}`}
-                    className={gameState} 
-                >{(guessedArrPalavra.length > 0) ? letra : '_'}
-                </p>
-                )
-            }
+                <LetraJogo map={[guessedArrPalavra,letra]} gameState={gameState} key={`${letra}[${i}]`}/>)}
             </div>
         </div>
     );
