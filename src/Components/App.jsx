@@ -46,7 +46,6 @@ function App() {
   
       setGameState('black');
       setForcaGuess(forcaImg[0]);
-
     }
   }
   //--------------
