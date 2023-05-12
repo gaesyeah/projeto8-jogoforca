@@ -16,7 +16,7 @@ import forca6 from '../assets/forca6.png';
 const forcaImg = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
 
 let wrongCounter;
-let arrPalavra;
+let arrPalavra = [];
 function App() {
 
   const [disableAllButtons, setDisableAllButtons] = useState(true);
@@ -34,15 +34,20 @@ function App() {
     wrongCounter = 0;
 
     const newPalavras = palavras.sort(() => Math.random() - 0.5);
-    arrPalavra = newPalavras[0].split('');
-    /* console.log(arrPalavra); */
-    setGuessedArrPalavra(Array(arrPalavra.length).fill('_'));
+    if (arrPalavra.join('') === newPalavras[0]) {
+      startGame();
+    } else {
+      /* console.log(newPalavras[0]); */
+      arrPalavra = newPalavras[0].split('');
+      setGuessedArrPalavra(Array(arrPalavra.length).fill('_'));
+  
+      setDisableAllButtons(false);
+      setArrGuessedButton([]);
+  
+      setGameState('black');
+      setForcaGuess(forcaImg[0]);
 
-    setDisableAllButtons(false);
-    setArrGuessedButton([]);
-
-    setGameState('black');
-    setForcaGuess(forcaImg[0]);
+    }
   }
   //--------------
   function buttonGuess(event) {
