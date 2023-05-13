@@ -17,8 +17,8 @@ const forcaImg = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
 
 function App() {
   
-  const [wrongCounter, setWrongCounter] = useState(0);
-  const [arrPalavra, setArrPalavra] = useState([]);
+  let [wrongCounter, setWrongCounter] = useState(0);
+  let [arrPalavra, setArrPalavra] = useState([]);
 
   const [disableAllButtons, setDisableAllButtons] = useState(true);
   const [arrGuessedButton, setArrGuessedButton] = useState([]);
