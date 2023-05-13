@@ -15,6 +15,7 @@ function Letra(props) {
                 onClick={guessClick}
                 disabled={arrGuessedButton.includes(letra) ? true : (disableAllButtons === false ? false : true)}
                 className={arrGuessedButton.includes(letra) ? 'disabled' : (disableAllButtons === false ? 'enabled' : 'disabled')}
+                data-test="letter"
             >{letra}</button> 
         </>
     )

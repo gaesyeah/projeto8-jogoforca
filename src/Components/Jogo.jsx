@@ -6,9 +6,9 @@ function Jogo(props) {
 
     return (
         <div className="game">
-            <img src={forcaGuess} />
-            <button onClick={startGame}>Escolher Palavra</button>
-            <p className={`${gameState} ${guessedPalavra === palavra ? ' final' : ' guessing'}`}>
+            <img src={forcaGuess} data-test="game-image"/>
+            <button onClick={startGame} data-test="choose-word" >Escolher Palavra</button>
+            <p className={`${gameState} ${guessedPalavra === palavra ? ' final' : ' guessing'}`} data-test="word">
                 {guessedPalavra}
             </p>
         </div>

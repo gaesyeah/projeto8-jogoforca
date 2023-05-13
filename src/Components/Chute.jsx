@@ -9,11 +9,13 @@ function Jogo(props) {
                 value={inputValue}
                 onChange={inputChange}
                 disabled={disableAllButtons === false ? false : true}
+                data-test="guess-input"
             ></input>
             <button
                 onClick={inputGuess}
                 className={disableAllButtons === false ? 'chuteEnabled' : 'chuteDisabled'}
                 disabled={disableAllButtons === false ? false : true}
+                data-test="guess-button"
             >Chutar</button>
         </div>
     );
