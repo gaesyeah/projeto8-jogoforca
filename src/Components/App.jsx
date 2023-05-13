@@ -15,9 +15,10 @@ import forca5 from '../assets/forca5.png';
 import forca6 from '../assets/forca6.png';
 const forcaImg = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
 
-let wrongCounter;
-let arrPalavra = [];
 function App() {
+  
+  const [wrongCounter, setWrongCounter] = useState(0);
+  const [arrPalavra, setArrPalavra] = useState([]);
 
   const [disableAllButtons, setDisableAllButtons] = useState(true);
   const [arrGuessedButton, setArrGuessedButton] = useState([]);
@@ -31,15 +32,16 @@ function App() {
 //-----------------------------
 
   function startGame() {
-    wrongCounter = 0;
+    setWrongCounter(0);
 
     const newPalavras = palavras.sort(() => Math.random() - 0.5);
     if (arrPalavra.join('') === newPalavras[0]) {
       startGame();
     } else {
       /* console.log(newPalavras[0]); */
-      arrPalavra = newPalavras[0].split('');
-      setGuessedArrPalavra(Array(arrPalavra.length).fill('_'));
+      const TEMPArrPalavra = newPalavras[0].split('');
+      setArrPalavra(TEMPArrPalavra);
+      setGuessedArrPalavra(Array(TEMPArrPalavra.length).fill('_'));
   
       setDisableAllButtons(false);
       setArrGuessedButton([]);
@@ -65,11 +67,13 @@ function App() {
     setGuessedArrPalavra([...TEMPguessedArrPalavra]);
     //----
     //para verificar a quantidade de erros
+    let TEMPwrongCounter = wrongCounter;
+
     if (rightGuess === false) {
-      wrongCounter++;
-      setForcaGuess(forcaImg[wrongCounter]);
+      TEMPwrongCounter++;
+      setForcaGuess(forcaImg[TEMPwrongCounter]);
     }
-    if (wrongCounter === 6) {
+    if (TEMPwrongCounter === 6) {
       setGameState('red');
       setDisableAllButtons(true);
       setGuessedArrPalavra([...arrPalavra]);
@@ -79,6 +83,8 @@ function App() {
       setGameState('green');
       setDisableAllButtons(true);
     }
+
+    setWrongCounter(TEMPwrongCounter);
   }
   //--------------
   function inputGuess() {
