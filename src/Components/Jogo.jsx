@@ -1,7 +1,7 @@
 function Jogo(props) {
 
     const {startGame, arrPalavra, guessedArrPalavra, gameState, forcaGuess} = props;
-    const palavra = arrPalavra.join('');
+    const palavra = arrPalavra.current.join('');
     const guessedPalavra = guessedArrPalavra.join('');
 
     return (

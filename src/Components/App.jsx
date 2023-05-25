@@ -3,7 +3,7 @@ import Letras from "./Letras/Letras";
 import Chute from "./Chute";
 
 import _ from 'lodash';
-import { useState } from "react";
+import { useRef, useState } from "react";
 import palavras from "../palavras";
 
 import forca0 from '../assets/forca0.png';
@@ -16,9 +16,9 @@ import forca6 from '../assets/forca6.png';
 const forcaImg = [forca0, forca1, forca2, forca3, forca4, forca5, forca6];
 
 function App() {
-  
-  let [wrongCounter, setWrongCounter] = useState(0);
-  let [arrPalavra, setArrPalavra] = useState([]);
+
+  const wrongCounter = useRef(0);
+  const arrPalavra = useRef([]);
 
   const [disableAllButtons, setDisableAllButtons] = useState(true);
   const [arrGuessedButton, setArrGuessedButton] = useState([]);
@@ -32,15 +32,15 @@ function App() {
 //-----------------------------
 
   function startGame() {
-    setWrongCounter(0);
+    wrongCounter.current = 0;
 
     const newPalavras = palavras.sort(() => Math.random() - 0.5);
-    if (arrPalavra.join('') === newPalavras[0]) {
+    if (arrPalavra.current.join('') === newPalavras[0]) {
       startGame();
     } else {
       /* console.log(newPalavras[0]); */
       const TEMPArrPalavra = newPalavras[0].split('');
-      setArrPalavra(TEMPArrPalavra);
+      arrPalavra.current = [...TEMPArrPalavra];
       setGuessedArrPalavra(Array(TEMPArrPalavra.length).fill('_'));
   
       setDisableAllButtons(false);
@@ -56,7 +56,7 @@ function App() {
     const TEMPguessedArrPalavra = [...guessedArrPalavra];
 
     let rightGuess = false;
-    arrPalavra.forEach((letra, i) => {
+    arrPalavra.current.forEach((letra, i) => {
         if (letraFromMap === _.deburr(letra)) {
           /* console.log(`Letra: ${letra}\nIndice: ${i}`); */
           TEMPguessedArrPalavra[i] = letra;
@@ -66,25 +66,20 @@ function App() {
     /* console.log(TEMPguessedArrPalavra); */
     setGuessedArrPalavra([...TEMPguessedArrPalavra]);
     //----
-    //para verificar a quantidade de erros
-    let TEMPwrongCounter = wrongCounter;
-
     if (rightGuess === false) {
-      TEMPwrongCounter++;
-      setForcaGuess(forcaImg[TEMPwrongCounter]);
+      wrongCounter.current++;
+      setForcaGuess(forcaImg[wrongCounter.current]);
     }
-    if (TEMPwrongCounter === 6) {
+    if (wrongCounter.current === 6) {
       setGameState('red');
       setDisableAllButtons(true);
-      setGuessedArrPalavra([...arrPalavra]);
+      setGuessedArrPalavra([...arrPalavra.current]);
     }
     //para verificar o acerto
-    if (TEMPguessedArrPalavra.join('') === arrPalavra.join('')) {
+    if (TEMPguessedArrPalavra.join('') === arrPalavra.current.join('')) {
       setGameState('green');
       setDisableAllButtons(true);
     }
-
-    setWrongCounter(TEMPwrongCounter);
   }
   //--------------
   function inputGuess() {
@@ -92,9 +87,9 @@ function App() {
     if (!inputValue) {
       alert('Digite uma palavra para poder chutar');
     } else {
-      setGuessedArrPalavra([...arrPalavra]);
+      setGuessedArrPalavra([...arrPalavra.current]);
       setDisableAllButtons(true);
-      if (inputValue === _.deburr(arrPalavra.join(''))) {
+      if (inputValue === _.deburr(arrPalavra.current.join(''))) {
         setGameState('green');
       } else {
         setGameState('red');
